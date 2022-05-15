@@ -28,9 +28,12 @@
   },
   "plugins": ["react", "prettier", "import"],
   "rules": {
+    "camelcase": "off",
+    "arrow-body-style": "off",
     "no-underscore-dangle": "off",
     "jsx-a11y/label-has-associated-control": "off",
     "no-shadow": "off",
+    "react/no-array-index-key": "off",
     "react/jsx-props-no-spreading": "off",
     "react/button-has-type": "off",
     "no-plusplus": "off",

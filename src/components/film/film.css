@@ -1,0 +1,32 @@
+@charset "UTF-8";
+.film__container {
+  align-items: center;
+  height: 281px;
+  width: 454px;
+  display: flex;
+  font-size: 10px;
+  margin-top: 10px;
+  padding: 0;
+  box-shadow: 4px 4px 8px 0 rgba(34, 60, 80, 0.2);
+}
+
+.film__img {
+  height: 100%;
+}
+
+.film__about {
+  margin: 0 20px 0 20px;
+  text-align: left;
+}
+
+.film__text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 11;
+  /* Число отображаемых строк */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  /* Вертикальная ориентация */
+}
+
+/*# sourceMappingURL=film.css.map */

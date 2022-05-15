@@ -1,1 +1,10 @@
 @import '~antd/dist/antd.css';
+
+.container {
+  text-align: center;
+  border: 2px black solid;
+  width: 1010px;
+  min-height: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}

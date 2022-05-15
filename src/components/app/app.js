@@ -1,16 +1,26 @@
-import Button from 'antd/es/button'
+import { useEffect, useState } from 'react'
 
 import './app.css'
 import Header from '../header'
+import FilmsList from '../films-list'
 import MapiService from '../../services/mapi-service'
 
 function App() {
-  MapiService()
-  return (
-    <div>
-      <Header />
+  const [films, setFilms] = useState([])
+  const mapiService = new MapiService()
 
-      <Button type="primary"> Я - кнопка компонента antd </Button>
+  useEffect(() => {
+    mapiService.getResourse().then((resultFromResponse) => {
+      setFilms(resultFromResponse.results)
+    })
+  }, [films.length])
+  return (
+    <div className="container">
+      <Header />
+      <FilmsList
+        films={films}
+
+      />
     </div>
   )
 }
