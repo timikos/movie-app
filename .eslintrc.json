@@ -28,6 +28,9 @@
   },
   "plugins": ["react", "prettier", "import"],
   "rules": {
+    "class-methods-use-this": "off",
+    "no-unused-expressions": "off",
+    "consistent-return": "off",
     "camelcase": "off",
     "arrow-body-style": "off",
     "no-underscore-dangle": "off",

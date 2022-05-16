@@ -2,10 +2,14 @@
 .container {
   text-align: center;
   border: 2px black solid;
-  width: 1010px;
+  max-width: 1010px;
   min-height: 1000px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.pagination__container {
+  margin-bottom: 20px;
 }
 
 /*# sourceMappingURL=app.css.map */

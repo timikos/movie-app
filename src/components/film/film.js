@@ -1,24 +1,29 @@
 import './film.css'
 import { useEffect, useState } from 'react'
 import { format, parseISO } from 'date-fns'
+import * as PropTypes from 'prop-types'
 
 function Film({
   title, release_date,
   genre_ids, overview,
-  poster_path
+  poster_path,
 }) {
-  const [img, setImg] = useState(null)
-  const [name, setName] = useState(null)
-  const [dateCreated, setDateCreated] = useState(null)
-  const [tags, setTags] = useState(null)
-  const [text, setText] = useState(null)
+  const [img, setImg] = useState('')
+  const [name, setName] = useState('')
+  const [dateCreated, setDateCreated] = useState('')
+  const [tags, setTags] = useState('')
+  const [text, setText] = useState('')
 
   useEffect(() => {
     setName(title)
-    setDateCreated(format(parseISO(release_date), 'MMMM dd, yyyy'))
+    release_date
+      ? setDateCreated(format(parseISO(release_date), 'MMMM dd, yyyy'))
+      : ''
     setTags(genre_ids)
     setText(overview)
-    setImg(poster_path)
+    if (poster_path) {
+      setImg(poster_path)
+    }
   }, [])
 
   return (
@@ -37,6 +42,22 @@ function Film({
 
     </div>
   )
+}
+
+Film.propTypes = {
+  title: PropTypes.string,
+  release_date: PropTypes.string,
+  genre_ids: PropTypes.number,
+  overview: PropTypes.string,
+  poster_path: PropTypes.string,
+}
+
+Film.defaultProps = {
+  title: '',
+  release_date: '',
+  genre_ids: 0,
+  overview: '',
+  poster_path: '',
 }
 
 export default Film
