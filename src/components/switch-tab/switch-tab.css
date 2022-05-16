@@ -1,7 +1,8 @@
 .tabs__container {
+  display: inline-block;
   margin-left: auto;
   margin-right: auto;
-  width: 120px;
+  text-align: center;
 }
 
 /*# sourceMappingURL=switch-tab.css.map */

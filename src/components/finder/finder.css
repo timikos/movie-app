@@ -1,5 +1,10 @@
 .finder__input {
   max-width: 950px;
 }
+@media (max-width: 320px) {
+  .finder__input {
+    width: 300px;
+  }
+}
 
 /*# sourceMappingURL=finder.css.map */

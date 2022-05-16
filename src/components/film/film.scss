@@ -7,15 +7,52 @@
   margin-top: 10px;
   padding: 0;
   box-shadow: 4px 4px 8px 0 rgba(34, 60, 80, 0.2);
+
+
+  @media (max-width: 320px) {
+    height: 245px;
+    width: 387px;
+    display: block;
+  }
 }
 
 .film__img {
   height: 100%;
+
+  @media (max-width: 320px) {
+    height: 91px;
+    width: 60px;
+    float: left;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+}
+
+.film__name {
+  @media (max-width: 320px) {
+
+  }
+}
+
+.film__date_created{
+  @media (max-width: 320px) {
+
+  }
+}
+
+.film__tags{
+  @media (max-width: 320px) {
+    margin-bottom: 20px;
+  }
 }
 
 .film__about{
   margin: 0 20px 0 20px;
   text-align: left;
+
+  @media (max-width: 320px) {
+    margin: 10px;
+  }
 }
 
 
@@ -25,5 +62,9 @@
   -webkit-line-clamp: 11; /* Число отображаемых строк */
   display: -webkit-box;
   -webkit-box-orient: vertical; /* Вертикальная ориентация */
+
+  @media (max-width: 320px) {
+    float: inherit;
+  }
 }
 

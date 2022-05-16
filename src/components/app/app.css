@@ -1,11 +1,15 @@
 @import '~antd/dist/antd.css';
 .container {
+  margin: 0 auto;
   text-align: center;
-  border: 2px black solid;
   max-width: 1010px;
   min-height: 1000px;
-  margin-left: auto;
-  margin-right: auto;
+  background: white;
+}
+@media (max-width: 320px) {
+  .container {
+    margin: 10px;
+  }
 }
 
 .pagination__container {

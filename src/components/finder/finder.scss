@@ -1,4 +1,8 @@
 .finder__input {
-
   max-width: 950px;
+
+  @media (max-width: 320px){
+    width: 300px;
+
+  }
 }
