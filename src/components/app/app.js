@@ -12,6 +12,7 @@ function App() {
   const [minValue, setMinValue] = useState(0)
   const [maxValue, setMaxValue] = useState(1)
   const [error, setError] = useState(false)
+  const [online, setOnline] = useState(true)
   const mapiService = new MapiService()
 
   const onError = () => {
@@ -24,7 +25,9 @@ function App() {
         setMinValue(0)
         setMaxValue(6)
       })
-      .catch(() => onError())
+      .catch(() => {
+        onError()
+      })
   }, [])
 
   const changePage = (page) => {
