@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { Input } from 'antd'
 import PropTypes from 'prop-types'
 
-import './finder.css'
 import MapiService from '../../services/mapi-service'
 
 function Finder ({ setFilms }) {
@@ -24,7 +23,7 @@ function Finder ({ setFilms }) {
   }
 
   return (
-    <div>
+    <section className="finder__container">
       <form
         action=""
         onSubmit={sub}
@@ -35,7 +34,7 @@ function Finder ({ setFilms }) {
           onChange={inputLabel}
         />
       </form>
-    </div>
+    </section>
   )
 }
 

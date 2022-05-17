@@ -1,10 +1,17 @@
-import './films-list.css'
-
 import PropTypes from 'prop-types'
+import { useEffect, useState } from 'react'
+import { Spin } from 'antd'
 
 import Film from '../film'
 
 function FilmsList({ films, minValue, maxValue }) {
+  const [loading, setLoading] = useState(false)
+  const spinner = loading ? <Spin /> : null
+
+  useEffect(() => {
+    setLoading(!loading)
+  }, [films])
+
   const elements = films.map((elem, index) => {
     if (index >= minValue && index < maxValue) {
       return (
@@ -17,8 +24,12 @@ function FilmsList({ films, minValue, maxValue }) {
     }
     return null
   })
-
-  return <ul className="films-list__container">{elements}</ul>
+  return (
+    <>
+      {spinner}
+      <ul className="films-list__container">{elements}</ul>
+    </>
+  )
 }
 
 Film.propTypes = {

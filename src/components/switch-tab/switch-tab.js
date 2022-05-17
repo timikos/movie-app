@@ -1,8 +1,6 @@
 import { Tabs } from 'antd'
 import * as PropTypes from 'prop-types'
 
-import './switch-tab.css'
-
 function TabPane() {
   return null
 }

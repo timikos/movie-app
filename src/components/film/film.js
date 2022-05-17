@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { format, parseISO } from 'date-fns'
 import * as PropTypes from 'prop-types'
 
-import './film.css'
 import circle from '../images/circle.svg'
 
 function Film({

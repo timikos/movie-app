@@ -28,6 +28,7 @@
   },
   "plugins": ["react", "prettier", "import"],
   "rules": {
+    "arrow-parens": "off",
     "prefer-template": "off",
     "comma-dangle": "off",
     "class-methods-use-this": "off",
@@ -38,6 +39,7 @@
     "no-underscore-dangle": "off",
     "jsx-a11y/label-has-associated-control": "off",
     "no-shadow": "off",
+    "react/jsx-wrap-multilines": "off",
     "react/no-array-index-key": "off",
     "react/jsx-props-no-spreading": "off",
     "react/button-has-type": "off",
