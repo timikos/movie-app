@@ -9,6 +9,7 @@ function FilmsList({ films, minValue, maxValue }) {
   const spinner = loading ? <Spin /> : null
 
   useEffect(() => {
+    console.log('RENDER')
     setLoading(!loading)
   }, [films])
 
