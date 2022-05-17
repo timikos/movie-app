@@ -26,7 +26,7 @@ function App() {
     setMinValue(() => (page - 1) * 6)
     setMaxValue(() => page * 6)
   }
-
+  console.log(films)
   return (
     <div className="container">
       <Header />

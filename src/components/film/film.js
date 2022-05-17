@@ -1,18 +1,26 @@
-import './film.css'
 import { useEffect, useState } from 'react'
 import { format, parseISO } from 'date-fns'
 import * as PropTypes from 'prop-types'
 
+import './film.css'
+import circle from '../images/circle.svg'
+
 function Film({
   title, release_date,
   genre_ids, overview,
-  poster_path,
+  poster_path, vote_average,
 }) {
   const [img, setImg] = useState('')
   const [name, setName] = useState('')
   const [dateCreated, setDateCreated] = useState('')
   const [tags, setTags] = useState('')
   const [text, setText] = useState('')
+  const [rating, setRating] = useState(0)
+
+  const limitText = (text) => {
+    const limited = text.substring(0, 400) + '...'
+    return text.length > 400 ? limited : text
+  }
 
   useEffect(() => {
     setName(title)
@@ -20,12 +28,12 @@ function Film({
       ? setDateCreated(format(parseISO(release_date), 'MMMM dd, yyyy'))
       : ''
     setTags(genre_ids)
-    setText(overview)
+    setText(limitText(overview))
     if (poster_path) {
       setImg(poster_path)
     }
+    setRating(vote_average)
   }, [])
-
   return (
     <div className="film__container">
       <img
@@ -38,6 +46,13 @@ function Film({
         <p className="film__date_created">{dateCreated}</p>
         <p className="film__tags">{tags}</p>
         <p className="film__text">{text}</p>
+        <div className="film__circle-rating">
+          <img
+            src={circle}
+            alt=""
+          />
+          <p>{rating}</p>
+        </div>
       </div>
 
     </div>

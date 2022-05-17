@@ -1,5 +1,5 @@
-@charset "UTF-8";
 .film__container {
+  position: relative;
   align-items: center;
   height: 281px;
   width: 454px;
@@ -46,19 +46,24 @@
   }
 }
 
-.film__text {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  -webkit-line-clamp: 11;
-  /* Число отображаемых строк */
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  /* Вертикальная ориентация */
-}
 @media (max-width: 320px) {
   .film__text {
     float: inherit;
   }
+}
+
+.film__circle-rating {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.film__circle-rating p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  font-size: 11px;
 }
 
 /*# sourceMappingURL=film.css.map */

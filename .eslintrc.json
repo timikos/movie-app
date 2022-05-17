@@ -28,6 +28,8 @@
   },
   "plugins": ["react", "prettier", "import"],
   "rules": {
+    "prefer-template": "off",
+    "comma-dangle": "off",
     "class-methods-use-this": "off",
     "no-unused-expressions": "off",
     "consistent-return": "off",
