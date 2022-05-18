@@ -7,14 +7,17 @@ import Film from '../film'
 function FilmsList({ films, minValue, maxValue }) {
   const [loading, setLoading] = useState(false)
   const spinner = loading ? <Spin /> : null
-
+  const noResult = films.length > 0 ? null : <p>Нет результатов</p>
+  console.log('RENDER FILMLIST')
   useEffect(() => {
-    console.log('RENDER')
-    setLoading(!loading)
+    console.log(films)
+    console.log('RENDER FILMLIST USE')
+    films.length > 0 ? setLoading(false) : setLoading(true)
   }, [films])
 
   const elements = films.map((elem, index) => {
     if (index >= minValue && index < maxValue) {
+      console.log(elem)
       return (
         <li key={index}>
           <Film
@@ -23,10 +26,12 @@ function FilmsList({ films, minValue, maxValue }) {
         </li>
       )
     }
+
     return null
   })
   return (
     <>
+      {noResult}
       {spinner}
       <ul className="films-list__container">{elements}</ul>
     </>

@@ -15,7 +15,6 @@ function Film({
   const [tags, setTags] = useState('')
   const [text, setText] = useState('')
   const [rating, setRating] = useState(0)
-
   const limitText = (text) => {
     const limited = text.substring(0, 400) + '...'
     return text.length > 400 ? limited : text
@@ -28,11 +27,10 @@ function Film({
       : ''
     setTags(genre_ids)
     setText(limitText(overview))
-    if (poster_path) {
-      setImg(poster_path)
-    }
+    poster_path ? setImg(poster_path) : setImg('')
     setRating(vote_average)
-  }, [])
+  })
+
   return (
     <div className="film__container">
       <img

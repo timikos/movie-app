@@ -13,21 +13,24 @@ function App() {
   const [maxValue, setMaxValue] = useState(1)
   const [error, setError] = useState(false)
   // const [online, setOnline] = useState(true)
-  const mapiService = new MapiService()
-
+  // const mapiService = new MapiService()
+  console.log('RENDER APP')
+  console.log(films + ' APP')
   const onError = () => {
     setError(true)
   }
   useEffect(() => {
-    mapiService.getResourse()
-      .then((resultFromResponse) => {
-        setFilms(resultFromResponse.results)
-        setMinValue(0)
-        setMaxValue(6)
-      })
-      .catch(() => {
-        onError()
-      })
+    console.log('RENDER APP USE')
+    console.log(films + ' APP USE')
+    // MapiService()
+    //   .then((resultFromResponse) => {
+    //     setFilms(resultFromResponse.results)
+    //     setMinValue(0)
+    //     setMaxValue(6)
+    //   })
+    //   .catch(() => {
+    //     onError()
+    //   })
   }, [])
 
   const changePage = (page) => {
@@ -42,6 +45,7 @@ function App() {
     : null
   return (
     <>
+
       {errorMessage}
       <main className="container">
         <Header />

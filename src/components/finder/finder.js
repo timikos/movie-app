@@ -8,16 +8,18 @@ import MapiService from '../../services/mapi-service'
 function Finder ({ setFilms }) {
   const [label, setLabel] = useState('')
   const placeholder = 'Type to search...'
-  const mapi = new MapiService()
-
+  // const mapi = new MapiService()
+  console.log('RENDER FINDER')
   const onLabelChange = (e) => {
     e.preventDefault()
     setLabel(e.target.value)
+
   }
   useEffect(() => {
-    setFilms([])
-    mapi.getResourse(label)
-      .then((res) => setFilms(res.results))
+    console.log('RENDER FINDER USE')
+    // MapiService.getResourse(label)
+    //   // .then((res) => setFilms(res.results))
+    //   // .catch(e => console.log(e))
   }, [label])
   return (
     <section className="finder__container">
