@@ -4,24 +4,22 @@ import { Spin } from 'antd'
 
 import Film from '../film'
 
-function FilmsList({ films, minValue, maxValue }) {
+function FilmsList(
+  {
+    labelInput, films, minValue, maxValue
+  }
+) {
   const [loading, setLoading] = useState(false)
   const [noRes, setNoResult] = useState(false)
   const spinner = loading ? <Spin /> : null
   const noResult = noRes ? <p>Нет результатов</p> : null
 
   useEffect(() => {
-    // films.length > 0 ? setLoading(false) : setLoading(true)
-    setNoResult(false)
-    if (films.length === 0) {
-      setLoading(true)
-      setTimeout(() => {
-        setLoading(false)
-        setNoResult(true)
-      },1000)
-    }
-
-    console.log(films)
+    films.length === 0
+    && labelInput === '' ? setLoading(true) : setLoading(false)
+    films.length === 0
+    && labelInput !== ''
+    && !loading ? setNoResult(true) : setNoResult(false)
   }, [films])
 
   const elements = films.map((elem, index) => {

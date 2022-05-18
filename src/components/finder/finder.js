@@ -1,28 +1,30 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { Input } from 'antd'
 import PropTypes from 'prop-types'
+import _ from 'lodash'
 
 import MapiService from '../../services/mapi-service'
-// import _ from 'lodash'
 
-function Finder ({ setFilms }) {
-  const [label, setLabel] = useState('')
+function Finder ({ labelInput, setLabelInput, setFilms }) {
   const placeholder = 'Type to search...'
   const onLabelChange = (e) => {
     e.preventDefault()
-    setLabel(e.target.value)
+    setLabelInput(e.target.value)
+    _.debounce( () => {console.log("TYT")}, 1000)()
   }
+
   useEffect(() => {
-    setFilms([])
-    MapiService(setFilms, () => {}, label)
-  }, [label])
+    // MapiService(setFilms, () => {}, labelInput)
+
+  }, [labelInput])
+
   return (
     <section className="finder__container">
       <form
         action=""
       >
         <Input
-          value={label}
+          value={labelInput}
           className="finder__input"
           placeholder={placeholder}
           onChange={onLabelChange}

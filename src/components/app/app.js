@@ -9,6 +9,7 @@ import MapiService from '../../services/mapi-service'
 
 function App() {
   const [films, setFilms] = useState([])
+  const [labelInput, setLabelInput] = useState('')
   const [minValue, setMinValue] = useState(0)
   const [maxValue, setMaxValue] = useState(1)
   const [error, setError] = useState(false)
@@ -35,10 +36,14 @@ function App() {
         <Header />
         <SwitchTab />
         <Finder
+          labelInput={labelInput}
+          setLabelInput={setLabelInput}
           films={films}
           setFilms={setFilms}
         />
         <FilmsList
+          labelInput={labelInput}
+          setLabelInput={setLabelInput}
           minValue={minValue}
           maxValue={maxValue}
           films={films}
