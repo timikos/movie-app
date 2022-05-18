@@ -29,7 +29,7 @@ function Film({
     setText(limitText(overview))
     poster_path ? setImg(poster_path) : setImg('')
     setRating(vote_average)
-  })
+  }, [])
 
   return (
     <div className="film__container">

@@ -6,18 +6,26 @@ import Film from '../film'
 
 function FilmsList({ films, minValue, maxValue }) {
   const [loading, setLoading] = useState(false)
+  const [noRes, setNoResult] = useState(false)
   const spinner = loading ? <Spin /> : null
-  const noResult = films.length > 0 ? null : <p>Нет результатов</p>
-  console.log('RENDER FILMLIST')
+  const noResult = noRes ? <p>Нет результатов</p> : null
+
   useEffect(() => {
+    // films.length > 0 ? setLoading(false) : setLoading(true)
+    setNoResult(false)
+    if (films.length === 0) {
+      setLoading(true)
+      setTimeout(() => {
+        setLoading(false)
+        setNoResult(true)
+      },1000)
+    }
+
     console.log(films)
-    console.log('RENDER FILMLIST USE')
-    films.length > 0 ? setLoading(false) : setLoading(true)
   }, [films])
 
   const elements = films.map((elem, index) => {
     if (index >= minValue && index < maxValue) {
-      console.log(elem)
       return (
         <li key={index}>
           <Film
