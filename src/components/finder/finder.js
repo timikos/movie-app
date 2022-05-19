@@ -1,22 +1,30 @@
-import { useEffect } from 'react'
+import { useCallback } from 'react'
 import { Input } from 'antd'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 
 import MapiService from '../../services/mapi-service'
 
-function Finder ({ labelInput, setLabelInput, setFilms }) {
+function Finder (
+  {
+    labelInput, setLabelInput, setFilms, setOnDebounced
+  }
+) {
   const placeholder = 'Type to search...'
+
+  const newReq = useCallback(_.debounce(value => {
+    MapiService(setFilms, () => {}, value)
+    setOnDebounced(false)
+  }, 1000), [])
+
   const onLabelChange = (e) => {
     e.preventDefault()
+    setFilms([])
+    const valueInput = e.target.value
     setLabelInput(e.target.value)
-    _.debounce( () => {console.log("TYT")}, 1000)()
+    valueInput !== '' ? newReq(e.target.value) : setLabelInput('')
+    setOnDebounced(true)
   }
-
-  useEffect(() => {
-    // MapiService(setFilms, () => {}, labelInput)
-
-  }, [labelInput])
 
   return (
     <section className="finder__container">

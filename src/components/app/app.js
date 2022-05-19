@@ -10,11 +10,12 @@ import MapiService from '../../services/mapi-service'
 function App() {
   const [films, setFilms] = useState([])
   const [labelInput, setLabelInput] = useState('')
+  const [onDebounced, setOnDebounced] = useState(false)
   const [minValue, setMinValue] = useState(0)
   const [maxValue, setMaxValue] = useState(1)
   const [error, setError] = useState(false)
   useEffect(() => {
-    MapiService(setFilms, setError, 'space')
+    MapiService(setFilms, setError, '')
     setMinValue(0)
     setMaxValue(6)
   }, [])
@@ -36,12 +37,14 @@ function App() {
         <Header />
         <SwitchTab />
         <Finder
+          setOnDebounced={setOnDebounced}
           labelInput={labelInput}
           setLabelInput={setLabelInput}
           films={films}
           setFilms={setFilms}
         />
         <FilmsList
+          onDebounced={onDebounced}
           labelInput={labelInput}
           setLabelInput={setLabelInput}
           minValue={minValue}

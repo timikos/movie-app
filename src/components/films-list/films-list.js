@@ -6,20 +6,26 @@ import Film from '../film'
 
 function FilmsList(
   {
-    labelInput, films, minValue, maxValue
+    labelInput, films, minValue, maxValue, onDebounced
   }
 ) {
   const [loading, setLoading] = useState(false)
   const [noRes, setNoResult] = useState(false)
+  const [noLabel, setNoLabel] = useState(false)
   const spinner = loading ? <Spin /> : null
-  const noResult = noRes ? <p>Нет результатов</p> : null
+  const noResultDiv = noRes ? <p>Нет результатов</p> : null
+  const noLabelDiv = noLabel ? <p>Введите название фильма</p> : null
 
   useEffect(() => {
     films.length === 0
-    && labelInput === '' ? setLoading(true) : setLoading(false)
+    && labelInput !== ''
+    && onDebounced ? setLoading(true) : setLoading(false)
     films.length === 0
     && labelInput !== ''
-    && !loading ? setNoResult(true) : setNoResult(false)
+    && !onDebounced ? setNoResult(true) : setNoResult(false)
+    films.length === 0
+    && labelInput === ''
+    && !loading ? setNoLabel(true) : setNoLabel(false)
   }, [films])
 
   const elements = films.map((elem, index) => {
@@ -37,7 +43,8 @@ function FilmsList(
   })
   return (
     <>
-      {noResult}
+      {noLabelDiv}
+      {noResultDiv}
       {spinner}
       <ul className="films-list__container">{elements}</ul>
     </>
