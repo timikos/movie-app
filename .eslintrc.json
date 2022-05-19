@@ -28,6 +28,7 @@
   },
   "plugins": ["react", "prettier", "import"],
   "rules": {
+    "import/no-cycle": "off",
     "arrow-parens": "off",
     "prefer-template": "off",
     "comma-dangle": "off",

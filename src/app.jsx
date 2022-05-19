@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { Alert, Pagination } from 'antd'
 
-import Header from '../header'
-import Finder from '../finder'
-import FilmsList from '../films-list'
-import SwitchTab from '../switch-tab'
-import MapiService from '../../services/mapi-service'
+import Header from './components/header'
+import Finder from './components/finder'
+import FilmsList from './components/films-list'
+import SwitchTab from './components/switch-tab'
+import MapiService from './services/mapi-service'
 
 function App() {
   const [films, setFilms] = useState([])

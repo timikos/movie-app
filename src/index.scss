@@ -1,8 +1,7 @@
 @import '~antd/dist/antd.css';
 
+@import "./app";
 @import "./components/header/header";
-@import "./components/app/app";
-@import "./components/error-indicator/error-indicator";
 @import "./components/finder/finder";
 @import "./components/films-list/films-list";
 @import "./components/film/film";

@@ -4,7 +4,7 @@ import * as PropTypes from 'prop-types'
 function TabPane() {
   return null
 }
-
+// В РАЗРАБОТКЕ
 function SwitchTab() {
   const tmp = () => {
   }
