@@ -4,23 +4,19 @@ import * as PropTypes from 'prop-types'
 function TabPane() {
   return null
 }
-// В РАЗРАБОТКЕ
-function SwitchTab() {
-  const tmp = () => {
+function SwitchTab({ toggleTab, setToggleTab }) {
+  const toggleHandler = () => {
+    setToggleTab(!toggleTab)
   }
   return (
     <div>
       <Tabs
+        onChange={toggleHandler}
         defaultActiveKey="1"
-        onChange={tmp}
         className="tabs__container"
       >
-        <TabPane tab="Search" key="1">
-          Content of Tab Pane 1
-        </TabPane>
-        <TabPane tab="Rated" key="2">
-          Content of Tab Pane 2
-        </TabPane>
+        <TabPane tab="Search" key="1" />
+        <TabPane tab="Rated" key="2" />
       </Tabs>
     </div>
   )

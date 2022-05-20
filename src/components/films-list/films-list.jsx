@@ -27,7 +27,6 @@ function FilmsList(
     && labelInput === ''
     && !loading ? setNoLabel(true) : setNoLabel(false)
   }, [films])
-
   const elements = films.map((elem, index) => {
     if (index >= minValue && index < maxValue) {
       return (

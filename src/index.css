@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import '~antd/dist/antd.css';
 .container {
   margin: 0 auto;
@@ -76,6 +77,14 @@
   }
 }
 
+.film__tags {
+  background: #FAFAFA;
+  display: inline;
+  border: 1px solid #D9D9D9;
+  border-radius: 2px;
+  margin: 0 3px 10px 0;
+  padding: 0 3px;
+}
 @media (max-width: 320px) {
   .film__tags {
     margin-bottom: 20px;
@@ -102,6 +111,10 @@
   position: absolute;
   top: 10px;
   right: 10px;
+  border: 2px solid;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
 }
 .film__circle-rating p {
   position: absolute;
@@ -110,6 +123,70 @@
   margin-right: -50%;
   transform: translate(-50%, -50%);
   font-size: 11px;
+}
+
+.circle-rating__red {
+  border-color: #E90000;
+}
+
+.circle-rating__orange {
+  border-color: #E97E00;
+}
+
+.circle-rating__yellow {
+  border-color: #E9D100;
+}
+
+.circle-rating__green {
+  border-color: #66E900;
+}
+
+.rating-area {
+  overflow: hidden;
+  width: 230px;
+  margin: 0 auto;
+}
+
+.rating-area:not(:checked) > input {
+  display: none;
+}
+
+.rating-area:not(:checked) > label {
+  float: right;
+  width: 20px;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 15px;
+  color: lightgrey;
+  text-shadow: 1px 1px #bbb;
+}
+
+.rating-area:not(:checked) > label:before {
+  content: "★";
+}
+
+.rating-area > input:checked ~ label {
+  color: gold;
+  text-shadow: 1px 1px #c60;
+}
+
+.rating-area:not(:checked) > label:hover,
+.rating-area:not(:checked) > label:hover ~ label {
+  color: gold;
+}
+
+.rating-area > input:checked + label:hover,
+.rating-area > input:checked + label:hover ~ label,
+.rating-area > input:checked ~ label:hover,
+.rating-area > input:checked ~ label:hover ~ label,
+.rating-area > label:hover ~ input:checked ~ label {
+  color: gold;
+  text-shadow: 1px 1px goldenrod;
+}
+
+.rate-area > label:active {
+  position: relative;
 }
 
 @keyframes ldio-z0eh54eqm7 {
