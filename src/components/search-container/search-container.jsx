@@ -7,7 +7,7 @@ import MapiService from '../../services/mapi-service'
 import JapiService from '../../services/japi-service'
 import { JenreProvider } from '../jenre-context'
 
-function SearchContainer() {
+function SearchContainer({setRatedFilms}) {
   const [films, setFilms] = useState([])
   const [genres, setGenres] = useState([])
   const [labelInput, setLabelInput] = useState('')
@@ -15,7 +15,6 @@ function SearchContainer() {
   const [minValue, setMinValue] = useState(0)
   const [maxValue, setMaxValue] = useState(1)
   const [error, setError] = useState(false)
-  console.log(films)
   useEffect(() => {
     JapiService(setGenres, setError)
     MapiService(setFilms, setError, '')
@@ -35,7 +34,7 @@ function SearchContainer() {
   />
     : null
   return (
-    <JenreProvider value={genres}>
+    <>
       {errorMessage}
       <Finder
         setOnDebounced={setOnDebounced}
@@ -45,6 +44,7 @@ function SearchContainer() {
         setFilms={setFilms}
       />
       <FilmsList
+        setRatedFilms={setRatedFilms}
         onDebounced={onDebounced}
         labelInput={labelInput}
         setLabelInput={setLabelInput}
@@ -59,7 +59,7 @@ function SearchContainer() {
         total={films.length}
         onChange={changePage}
       />
-    </JenreProvider>
+    </>
   )
 }
 

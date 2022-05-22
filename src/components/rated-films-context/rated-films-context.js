@@ -1,6 +1,6 @@
 import React from 'react'
 
 export const {
-  Provider: JenreProvider,
-  Consumer: JenreConsumer
+  Provider: RatedFilmsProvider,
+  Consumer: RatedFilmsConsumer
 } = React.createContext()

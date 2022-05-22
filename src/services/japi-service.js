@@ -1,4 +1,4 @@
-export default function JapiService(setOption, setError) {
+export default function JapiService(setOption, setError = 'setError') {
   fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=a3d9e1626ef496ba66593f7546c2158c')
     .then(response => {
       return response.json()

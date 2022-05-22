@@ -4,6 +4,7 @@ import * as PropTypes from 'prop-types'
 
 import Genre from '../genre'
 import { JenreConsumer } from '../jenre-context'
+import { RatedFilmsConsumer } from '../rated-films-context'
 
 function Film({
   title, release_date,
@@ -41,51 +42,58 @@ function Film({
         (genres) => {
           const genresFilm = tags.map(elem => genres[elem])
           return (
-            <div className="film__container">
-              <img
-                src={`https://image.tmdb.org/t/p/w500/${img}`}
-                alt="Poster"
-                className="film__img"
-              />
-              <div className="film__about">
-                <h2 className="film__name">{name}</h2>
-                <p className="film__date_created">{dateCreated}</p>
-                {genresFilm.map((elem, index) => {
-                  return (
-                    <Genre
-                      key={index}
-                      elem={elem}
+            <RatedFilmsConsumer>
+              {(addOnRatedFilms) => {
+                return (
+                  <div className="film__container">
+                    <img
+                      src={`https://image.tmdb.org/t/p/w500/${img}`}
+                      alt="Poster"
+                      className="film__img"
                     />
-                  )
-                })}
-                <p className="film__text">{text}</p>
-                <div className={className}>
-                  <p>{rating}</p>
-                </div>
-                <div className="rating-area">
-                  <input type="radio" id="star-1" name="rating" value="1" />
-                  <label htmlFor="star-1" title="Оценка «1»" />
-                  <input type="radio" id="star-2" name="rating" value="2" />
-                  <label htmlFor="star-2" title="Оценка «2»" />
-                  <input type="radio" id="star-3" name="rating" value="3" />
-                  <label htmlFor="star-3" title="Оценка «3»" />
-                  <input type="radio" id="star-4" name="rating" value="4" />
-                  <label htmlFor="star-4" title="Оценка «4»" />
-                  <input type="radio" id="star-5" name="rating" value="5" />
-                  <label htmlFor="star-5" title="Оценка «5»" />
-                  <input type="radio" id="star-6" name="rating" value="6" />
-                  <label htmlFor="star-6" title="Оценка «6»" />
-                  <input type="radio" id="star-7" name="rating" value="7" />
-                  <label htmlFor="star-7" title="Оценка «7»" />
-                  <input type="radio" id="star-8" name="rating" value="8" />
-                  <label htmlFor="star-8" title="Оценка «8»" />
-                  <input type="radio" id="star-9" name="rating" value="9" />
-                  <label htmlFor="star-9" title="Оценка «9»" />
-                  <input type="radio" id="star-10" name="rating" value="10" />
-                  <label htmlFor="star-10" title="Оценка «10»" />
-                </div>
-              </div>
-            </div>
+                    <div className="film__about">
+                      <h2 className="film__name">{name}</h2>
+                      <p className="film__date_created">{dateCreated}</p>
+                      {genresFilm.map((elem, index) => {
+                        return (
+                          <Genre
+                            key={index}
+                            elem={elem}
+                          />
+                        )
+                      })}
+                      <p className="film__text">{text}</p>
+                      <div className={className}>
+                        <p>{rating}</p>
+                      </div>
+                      <div className="rating-area" onClick={addOnRatedFilms}>
+                        <input type="radio" id="star-1" name="rating" value="1" />
+                        <label htmlFor="star-1" title="Оценка «1»" />
+                        <input type="radio" id="star-2" name="rating" value="2" />
+                        <label htmlFor="star-2" title="Оценка «2»" />
+                        <input type="radio" id="star-3" name="rating" value="3" />
+                        <label htmlFor="star-3" title="Оценка «3»" />
+                        <input type="radio" id="star-4" name="rating" value="4" />
+                        <label htmlFor="star-4" title="Оценка «4»" />
+                        <input type="radio" id="star-5" name="rating" value="5" />
+                        <label htmlFor="star-5" title="Оценка «5»" />
+                        <input type="radio" id="star-6" name="rating" value="6" />
+                        <label htmlFor="star-6" title="Оценка «6»" />
+                        <input type="radio" id="star-7" name="rating" value="7" />
+                        <label htmlFor="star-7" title="Оценка «7»" />
+                        <input type="radio" id="star-8" name="rating" value="8" />
+                        <label htmlFor="star-8" title="Оценка «8»" />
+                        <input type="radio" id="star-9" name="rating" value="9" />
+                        <label htmlFor="star-9" title="Оценка «9»" />
+                        <input type="radio" id="star-10" name="rating" value="10" />
+                        <label htmlFor="star-10" title="Оценка «10»" />
+                      </div>
+                    </div>
+                  </div>
+                )
+              }
+            }
+            </RatedFilmsConsumer>
           )
         }
       }

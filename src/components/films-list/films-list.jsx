@@ -3,10 +3,11 @@ import { useEffect, useState } from 'react'
 import { Spin } from 'antd'
 
 import Film from '../film'
+import { RatedFilmsProvider } from '../rated-films-context'
 
 function FilmsList(
   {
-    labelInput, films, minValue, maxValue, onDebounced
+    labelInput, films, minValue, maxValue, onDebounced, setRatedFilms
   }
 ) {
   const [loading, setLoading] = useState(false)
@@ -27,13 +28,18 @@ function FilmsList(
     && labelInput === ''
     && !loading ? setNoLabel(true) : setNoLabel(false)
   }, [films])
+  const addOnRatedFilms = () => {
+    setRatedFilms([films[0]])
+  }
   const elements = films.map((elem, index) => {
     if (index >= minValue && index < maxValue) {
       return (
         <li key={index}>
-          <Film
-            {...elem}
-          />
+          <RatedFilmsProvider value={addOnRatedFilms}>
+            <Film
+              {...elem}
+            />
+          </RatedFilmsProvider>
         </li>
       )
     }
