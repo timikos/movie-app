@@ -7,12 +7,11 @@ import { RatedFilmsProvider } from './components/rated-films-context'
 import JapiService from './services/japi-service'
 import { JenreProvider } from './components/jenre-context'
 
-
 function App() {
   const [toggleTab, setToggleTab] = useState(true)
   const [ratedFilms, setRatedFilms] = useState([])
+  const [stars, setStars] = useState([])
   const [genres, setGenres] = useState([])
-  console.log(ratedFilms)
   useEffect(() => {
     JapiService(setGenres)
   }, [])
@@ -23,12 +22,21 @@ function App() {
         toggleTab={toggleTab}
       />
       <JenreProvider value={genres}>
-        {toggleTab
-          ? <RatedFilmsProvider value={setRatedFilms}>
-            <SearchContainer setRatedFilms={setRatedFilms} />
-        </RatedFilmsProvider>
-          : <RatedContainer ratedFilms={ratedFilms} />
-        }
+        <RatedFilmsProvider value={(setStars, setRatedFilms)}>
+          {toggleTab
+            ?
+            <SearchContainer
+              stars={stars}
+              setStars={setStars}
+              setRatedFilms={setRatedFilms}
+              ratedFilms={ratedFilms}
+            />
+          : <RatedContainer
+              stars={stars}
+              ratedFilms={ratedFilms}
+            />
+          }
+          </RatedFilmsProvider>
       </JenreProvider>
     </main>
   )

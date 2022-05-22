@@ -107,43 +107,51 @@
   border-color: #66E900;
 }
 
-.rating-area {
+.star {
   overflow: hidden;
-  width: 230px;
+  width: 30px;
   margin: 0 auto;
 }
-.rating-area:not(:checked) > input {
-  display: none;
-}
-.rating-area:not(:checked) > label {
-  float: right;
-  width: 20px;
-  padding: 5px;
-  cursor: pointer;
-  font-size: 15px;
-  line-height: 15px;
-  color: lightgrey;
-  text-shadow: 1px 1px #bbb;
-}
-.rating-area:not(:checked) > label:before {
-  content: '★';
-}
-.rating-area > input:checked ~ label {
-  color: gold;
-  text-shadow: 1px 1px #c60;
-}
-.rating-area:not(:checked) > label:hover,
-.rating-area:not(:checked) > label:hover ~ label {
-  color: gold;
-}
-.rating-area > input:checked + label:hover,
-.rating-area > input:checked + label:hover ~ label,
-.rating-area > input:checked ~ label:hover,
-.rating-area > input:checked ~ label:hover ~ label,
-.rating-area > label:hover ~ input:checked ~ label {
-  color: gold;
-  text-shadow: 1px 1px goldenrod;
-}
-.rate-area > label:active {
-  position: relative;
-}
+
+//.rating-area {
+//  overflow: hidden;
+//  width: 230px;
+//  margin: 0 auto;
+//}
+//.rating-area:not(:checked) > input {
+//  display: none;
+//}
+//.rating-area:not(:checked) > label {
+//  float: right;
+//  width: 20px;
+//  padding: 5px;
+//  cursor: pointer;
+//  font-size: 15px;
+//  line-height: 15px;
+//  color: lightgrey;
+//  text-shadow: 1px 1px #bbb;
+//}
+//.rating-area:not(:checked) > label:before {
+//  content: '★';
+//}
+//.rating-area > input:checked ~ label {
+//  color: gold;
+//  text-shadow: 1px 1px #c60;
+//}
+//.rating-area:not(:checked) > label:hover,
+//.rating-area:not(:checked) > label:hover ~ label {
+//  color: gold;
+//}
+//.rating-area > input:checked + label:hover,
+//.rating-area > input:checked + label:hover ~ label,
+//.rating-area > input:checked ~ label:hover,
+//.rating-area > input:checked ~ label:hover ~ label,
+//.rating-area > label:hover ~ input:checked ~ label {
+//  color: gold;
+//  text-shadow: 1px 1px goldenrod;
+//}
+//.rate-area > label:active {
+//  position: relative;
+//}
+
+

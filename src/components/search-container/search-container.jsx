@@ -5,9 +5,10 @@ import FilmsList from '../films-list'
 import Finder from '../finder'
 import MapiService from '../../services/mapi-service'
 import JapiService from '../../services/japi-service'
-import { JenreProvider } from '../jenre-context'
 
-function SearchContainer({setRatedFilms}) {
+function SearchContainer({
+  setRatedFilms, ratedFilms, setStars, stars
+}) {
   const [films, setFilms] = useState([])
   const [genres, setGenres] = useState([])
   const [labelInput, setLabelInput] = useState('')
@@ -44,6 +45,9 @@ function SearchContainer({setRatedFilms}) {
         setFilms={setFilms}
       />
       <FilmsList
+        stars={stars}
+        setStars={setStars}
+        ratedFilms={ratedFilms}
         setRatedFilms={setRatedFilms}
         onDebounced={onDebounced}
         labelInput={labelInput}

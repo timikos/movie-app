@@ -1,47 +1,41 @@
-import PropTypes from 'prop-types'
-import { useEffect, useState } from 'react'
+import { Pagination } from 'antd'
+import { useState, useEffect } from 'react'
 
-import Film from '../film'
+import RatedFilmsList from '../rated-films-list'
 
-function RatedContainer(
-  {
-    ratedFilms, minValue, maxValue, setRatedFilms
+function RatedContainer({
+  setRatedFilms, ratedFilms, stars
+}) {
+  const [minValue, setMinValue] = useState(0)
+  const [maxValue, setMaxValue] = useState(1)
+  useEffect(() => {
+    setMinValue(0)
+    setMaxValue(6)
+  }, [])
+
+  const changePage = (page) => {
+    setMinValue(() => (page - 1) * 6)
+    setMaxValue(() => page * 6)
   }
-) {
-  const elements = ratedFilms.map((elem, index) => {
 
-      return (
-        <li key={index}>
-          <Film
-            {...elem}
-          />
-        </li>
-      )
-
-
-    return null
-  })
   return (
-    <ul className="films-list__container">{elements}</ul>
+    <>
+      <RatedFilmsList
+        stars={stars}
+        ratedFilms={ratedFilms}
+        setRatedFilms={setRatedFilms}
+        minValue={minValue}
+        maxValue={maxValue}
+      />
+      <Pagination
+        className="pagination__container"
+        defaultPageSize={6}
+        defaultCurrent={1}
+        total={ratedFilms.length}
+        onChange={changePage}
+      />
+    </>
   )
-}
-
-RatedContainer.propTypes = {
-  films: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string,
-    release_date: PropTypes.string,
-    genre_ids: PropTypes.number,
-    overview: PropTypes.string,
-    poster_path: PropTypes.string,
-  })),
-  minValue: PropTypes.number,
-  maxValue: PropTypes.number,
-}
-
-RatedContainer.defaultProps = {
-  films: [],
-  minValue: 0,
-  maxValue: 0,
 }
 
 export default RatedContainer

@@ -7,7 +7,7 @@ import { RatedFilmsProvider } from '../rated-films-context'
 
 function FilmsList(
   {
-    labelInput, films, minValue, maxValue, onDebounced, setRatedFilms
+    labelInput, films, minValue, maxValue, onDebounced, setRatedFilms, ratedFilms, setStars, stars
   }
 ) {
   const [loading, setLoading] = useState(false)
@@ -16,7 +16,6 @@ function FilmsList(
   const spinner = loading ? <Spin /> : null
   const noResultDiv = noRes ? <p>Нет результатов</p> : null
   const noLabelDiv = noLabel ? <p>Введите название фильма</p> : null
-
   useEffect(() => {
     films.length === 0
     && labelInput !== ''
@@ -28,15 +27,22 @@ function FilmsList(
     && labelInput === ''
     && !loading ? setNoLabel(true) : setNoLabel(false)
   }, [films])
-  const addOnRatedFilms = () => {
-    setRatedFilms([films[0]])
+  const addOnRatedFilms = (film, valueStars) => {
+    const newArrRated = [...ratedFilms]
+    newArrRated.push(film)
+    const tmpArr = [...stars]
+    tmpArr.push(valueStars)
+    setStars(tmpArr)
+    setRatedFilms(newArrRated)
   }
   const elements = films.map((elem, index) => {
     if (index >= minValue && index < maxValue) {
       return (
         <li key={index}>
-          <RatedFilmsProvider value={addOnRatedFilms}>
+          <RatedFilmsProvider>
             <Film
+              addOnRatedFilms={addOnRatedFilms}
+              elem={elem}
               {...elem}
             />
           </RatedFilmsProvider>

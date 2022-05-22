@@ -1,18 +1,17 @@
 import { useEffect, useState } from 'react'
 import { format, parseISO } from 'date-fns'
 import * as PropTypes from 'prop-types'
-import { Rate } from 'antd'
 
 import Genre from '../genre'
 import { JenreConsumer } from '../jenre-context'
 import { RatedFilmsConsumer } from '../rated-films-context'
+import { Rate } from 'antd'
 
-function Film({
-  elem,
+function RatedFilm({
   title, release_date,
   genre_ids, overview,
   poster_path, vote_average,
-  addOnRatedFilms
+  stars, index
 }) {
   const [img, setImg] = useState('')
   const [name, setName] = useState('')
@@ -71,7 +70,7 @@ function Film({
                       </div>
                       <Rate
                         count={10}
-                        onChange={(value) => addOnRatedFilms(elem, value)}
+                        value={stars[index]}
                       />
                     </div>
                   </div>
@@ -85,20 +84,20 @@ function Film({
   )
 }
 
-Film.propTypes = {
+RatedFilm.propTypes = {
   title: PropTypes.string,
   release_date: PropTypes.string,
-  genre_ids: PropTypes.number,
+  genre_ids: PropTypes.arrayOf(PropTypes.number),
   overview: PropTypes.string,
   poster_path: PropTypes.string,
 }
 
-Film.defaultProps = {
+RatedFilm.defaultProps = {
   title: '',
   release_date: '',
-  genre_ids: 0,
+  genre_ids: [],
   overview: '',
   poster_path: '',
 }
 
-export default Film
+export default RatedFilm
