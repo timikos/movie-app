@@ -9,7 +9,6 @@
   padding: 0;
   box-shadow: 4px 4px 8px 0 rgba(34, 60, 80, 0.2);
 
-
   @media (max-width: 320px) {
     height: 245px;
     width: 387px;
@@ -41,19 +40,6 @@
   }
 }
 
-.film__tags{
-  background: #FAFAFA;
-  display: inline;
-  border: 1px solid #D9D9D9;
-  border-radius: 2px;
-  margin: 0 3px 10px 0;
-  padding: 0 3px;
-
-  @media (max-width: 320px) {
-    margin-bottom: 20px;
-  }
-}
-
 .film__about{
   margin: 0 20px 0 20px;
   text-align: left;
@@ -62,7 +48,6 @@
     margin: 10px;
   }
 }
-
 
 .film__text {
   @media (max-width: 320px) {
@@ -78,7 +63,6 @@
   border-radius: 50%;
   width: 30px;
   height: 30px;
-
 
   p {
     position: absolute;
@@ -107,51 +91,10 @@
   border-color: #66E900;
 }
 
-.star {
-  overflow: hidden;
-  width: 30px;
-  margin: 0 auto;
-}
-
-//.rating-area {
+//.star {
 //  overflow: hidden;
-//  width: 230px;
+//  width: 30px;
 //  margin: 0 auto;
-//}
-//.rating-area:not(:checked) > input {
-//  display: none;
-//}
-//.rating-area:not(:checked) > label {
-//  float: right;
-//  width: 20px;
-//  padding: 5px;
-//  cursor: pointer;
-//  font-size: 15px;
-//  line-height: 15px;
-//  color: lightgrey;
-//  text-shadow: 1px 1px #bbb;
-//}
-//.rating-area:not(:checked) > label:before {
-//  content: '★';
-//}
-//.rating-area > input:checked ~ label {
-//  color: gold;
-//  text-shadow: 1px 1px #c60;
-//}
-//.rating-area:not(:checked) > label:hover,
-//.rating-area:not(:checked) > label:hover ~ label {
-//  color: gold;
-//}
-//.rating-area > input:checked + label:hover,
-//.rating-area > input:checked + label:hover ~ label,
-//.rating-area > input:checked ~ label:hover,
-//.rating-area > input:checked ~ label:hover ~ label,
-//.rating-area > label:hover ~ input:checked ~ label {
-//  color: gold;
-//  text-shadow: 1px 1px goldenrod;
-//}
-//.rate-area > label:active {
-//  position: relative;
 //}
 
 

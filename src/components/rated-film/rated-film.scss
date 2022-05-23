@@ -1,20 +1,4 @@
-.rating-result {
-  width: 100px;
+.rating-film__stars {
   margin: 0 auto;
   border: 2px solid black;
-}
-.rating-result span {
-  padding: 0;
-  font-size: 32px;
-  margin: 0 3px;
-  line-height: 1;
-  color: lightgrey;
-  text-shadow: 1px 1px #bbb;
-}
-.rating-result > span:before {
-  content: '★';
-}
-.rating-result > span.active {
-  color: gold;
-  text-shadow: 1px 1px #c60;
 }

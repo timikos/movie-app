@@ -1,10 +1,12 @@
 import { Pagination } from 'antd'
 import { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 
 import RatedFilmsList from '../rated-films-list'
 
 function RatedContainer({
-  setRatedFilms, ratedFilms, stars
+  ratedFilms, stars,
+
 }) {
   const [minValue, setMinValue] = useState(0)
   const [maxValue, setMaxValue] = useState(1)
@@ -23,7 +25,6 @@ function RatedContainer({
       <RatedFilmsList
         stars={stars}
         ratedFilms={ratedFilms}
-        setRatedFilms={setRatedFilms}
         minValue={minValue}
         maxValue={maxValue}
       />
@@ -36,6 +37,22 @@ function RatedContainer({
       />
     </>
   )
+}
+
+RatedContainer.propTypes = {
+  ratedFilms: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string,
+    release_date: PropTypes.string,
+    genre_ids: PropTypes.number,
+    overview: PropTypes.string,
+    poster_path: PropTypes.string,
+  })),
+  stars: PropTypes.arrayOf(PropTypes.number),
+}
+
+RatedContainer.defaultProps = {
+  ratedFilms: [],
+  stars: [],
 }
 
 export default RatedContainer

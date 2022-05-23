@@ -1,0 +1,12 @@
+.film__tags{
+  background: #FAFAFA;
+  display: inline;
+  border: 1px solid #D9D9D9;
+  border-radius: 2px;
+  margin: 0 3px 10px 0;
+  padding: 0 3px;
+
+  @media (max-width: 320px) {
+    margin-bottom: 20px;
+  }
+}

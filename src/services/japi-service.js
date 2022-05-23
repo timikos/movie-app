@@ -7,6 +7,7 @@ export default function JapiService(setOption, setError = 'setError') {
       const genresObj = {}
       jsonResponse.genres.map(elem => {
         genresObj[elem.id] = elem.name
+        return genresObj[elem.id]
       })
       setOption(genresObj)
     }).catch(() => setError(true))

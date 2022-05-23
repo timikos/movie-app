@@ -7,12 +7,12 @@ import MapiService from '../../services/mapi-service'
 
 function Finder (
   {
-    labelInput, setLabelInput, setFilms, setOnDebounced
+    textInput, setTextInput,
+    setFilms, setOnDebounced
   }
 ) {
   const placeholder = 'Type to search...'
-
-  const newReq = useCallback(_.debounce(value => {
+  const newRequest = useCallback(_.debounce(value => {
     MapiService(setFilms, () => {}, value)
     setOnDebounced(false)
   }, 1000), [])
@@ -21,8 +21,8 @@ function Finder (
     e.preventDefault()
     setFilms([])
     const valueInput = e.target.value
-    setLabelInput(e.target.value)
-    valueInput !== '' ? newReq(e.target.value) : setLabelInput('')
+    setTextInput(e.target.value)
+    valueInput !== '' ? newRequest(e.target.value) : setTextInput('')
     setOnDebounced(true)
   }
 
@@ -32,7 +32,7 @@ function Finder (
         action=""
       >
         <Input
-          value={labelInput}
+          value={textInput}
           className="finder__input"
           placeholder={placeholder}
           onChange={onLabelChange}

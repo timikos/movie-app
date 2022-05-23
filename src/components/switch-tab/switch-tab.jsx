@@ -15,21 +15,27 @@ function SwitchTab({ toggleTab, setToggleTab }) {
         defaultActiveKey="1"
         className="tabs__container"
       >
-        <TabPane tab="Search" key="1" />
-        <TabPane tab="Rated" key="2" />
+        <TabPane
+          tab="Search"
+          key="1"
+        />
+        <TabPane
+          tab="Rated"
+          key="2"
+        />
       </Tabs>
     </div>
   )
 }
 
-TabPane.propTypes = {
-  tab: PropTypes.string,
-  children: PropTypes.node,
+SwitchTab.propTypes = {
+  toggleTab: PropTypes.bool,
+  setToggleTab: PropTypes.func,
 }
 
-TabPane.defaultProps = {
-  tab: '',
-  children: <div> </div>,
+SwitchTab.defaultProps = {
+  toggleTab: false,
+  setToggleTab: () => {},
 }
 
 export default SwitchTab

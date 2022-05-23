@@ -3,49 +3,47 @@ import { useEffect, useState } from 'react'
 import { Spin } from 'antd'
 
 import Film from '../film'
-import { RatedFilmsProvider } from '../rated-films-context'
 
 function FilmsList(
   {
-    labelInput, films, minValue, maxValue, onDebounced, setRatedFilms, ratedFilms, setStars, stars
+    films, ratedFilms,
+    minValue, maxValue,
+    textInput, stars,
+    onDebounced, setRatedFilms,
+    setStars
   }
 ) {
-  const [loading, setLoading] = useState(false)
-  const [noRes, setNoResult] = useState(false)
-  const [noLabel, setNoLabel] = useState(false)
-  const spinner = loading ? <Spin /> : null
-  const noResultDiv = noRes ? <p>Нет результатов</p> : null
-  const noLabelDiv = noLabel ? <p>Введите название фильма</p> : null
+  const [onLoad, setOnLoad] = useState(false)
+  const [onResult, setOnResult] = useState(false)
+  const [onHaveTextInput, setOnHaveTextInput] = useState(false)
+  const spinnerLoading = onLoad ? <Spin /> : null
+  const noResultDiv = onResult ? <p>Нет результатов</p> : null
+  const noTextInputDiv = onHaveTextInput ? <p>Введите название фильма</p> : null
   useEffect(() => {
-    films.length === 0
-    && labelInput !== ''
-    && onDebounced ? setLoading(true) : setLoading(false)
-    films.length === 0
-    && labelInput !== ''
-    && !onDebounced ? setNoResult(true) : setNoResult(false)
-    films.length === 0
-    && labelInput === ''
-    && !loading ? setNoLabel(true) : setNoLabel(false)
+    textInput !== ''
+    && onDebounced ? setOnLoad(true) : setOnLoad(false)
+    films.length === 0 && textInput !== ''
+    && !onDebounced ? setOnResult(true) : setOnResult(false)
+    textInput === ''
+    && !onLoad ? setOnHaveTextInput(true) : setOnHaveTextInput(false)
   }, [films])
   const addOnRatedFilms = (film, valueStars) => {
-    const newArrRated = [...ratedFilms]
-    newArrRated.push(film)
-    const tmpArr = [...stars]
-    tmpArr.push(valueStars)
-    setStars(tmpArr)
-    setRatedFilms(newArrRated)
+    const newArrRatedFilms = [...ratedFilms]
+    newArrRatedFilms.push(film)
+    const newArrStars = [...stars]
+    newArrStars.push(valueStars)
+    setStars(newArrStars)
+    setRatedFilms(newArrRatedFilms)
   }
   const elements = films.map((elem, index) => {
     if (index >= minValue && index < maxValue) {
       return (
         <li key={index}>
-          <RatedFilmsProvider>
-            <Film
-              addOnRatedFilms={addOnRatedFilms}
-              elem={elem}
-              {...elem}
-            />
-          </RatedFilmsProvider>
+          <Film
+            addOnRatedFilms={addOnRatedFilms}
+            elem={elem}
+            {...elem}
+          />
         </li>
       )
     }
@@ -54,30 +52,48 @@ function FilmsList(
   })
   return (
     <>
-      {noLabelDiv}
+      {noTextInputDiv}
       {noResultDiv}
-      {spinner}
+      {spinnerLoading}
       <ul className="films-list__container">{elements}</ul>
     </>
   )
 }
 
-Film.propTypes = {
+FilmsList.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string,
+    release_date: PropTypes.string,
+    genre_ids: PropTypes.arrayOf(PropTypes.number),
+    overview: PropTypes.string,
+    poster_path: PropTypes.string,
+  })),
+  ratedFilms: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string,
     release_date: PropTypes.string,
     genre_ids: PropTypes.number,
     overview: PropTypes.string,
     poster_path: PropTypes.string,
   })),
+  stars: PropTypes.arrayOf(PropTypes.number),
+  labelInput: PropTypes.string,
   minValue: PropTypes.number,
   maxValue: PropTypes.number,
+  onDebounced: PropTypes.bool,
+  setRatedFilms: PropTypes.func,
+  setStars: PropTypes.func,
 }
 
-Film.defaultProps = {
+FilmsList.defaultProps = {
   films: [],
+  ratedFilms: [],
+  stars: [],
+  labelInput: '',
   minValue: 0,
   maxValue: 0,
+  onDebounced: false,
+  setRatedFilms: () => {},
+  setStars: () => {},
 }
 
 export default FilmsList

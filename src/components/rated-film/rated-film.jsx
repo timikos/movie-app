@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react'
 import { format, parseISO } from 'date-fns'
 import * as PropTypes from 'prop-types'
+import { Rate } from 'antd'
 
 import Genre from '../genre'
 import { JenreConsumer } from '../jenre-context'
-import { RatedFilmsConsumer } from '../rated-films-context'
-import { Rate } from 'antd'
 
 function RatedFilm({
   title, release_date,
@@ -44,39 +43,34 @@ function RatedFilm({
         (genres) => {
           const genresFilm = tags.map(elem => genres[elem])
           return (
-            <RatedFilmsConsumer>
-              {() => {
-                return (
-                  <div className="film__container">
-                    <img
-                      src={`https://image.tmdb.org/t/p/w500/${img}`}
-                      alt="Poster"
-                      className="film__img"
+            <div className="film__container">
+              <img
+                src={`https://image.tmdb.org/t/p/w500/${img}`}
+                alt="Poster"
+                className="film__img"
+              />
+              <div className="film__about">
+                <h2 className="film__name">{name}</h2>
+                <p className="film__date_created">{dateCreated}</p>
+                {genresFilm.map((elem, index) => {
+                  return (
+                    <Genre
+                      key={index}
+                      elem={elem}
                     />
-                    <div className="film__about">
-                      <h2 className="film__name">{name}</h2>
-                      <p className="film__date_created">{dateCreated}</p>
-                      {genresFilm.map((elem, index) => {
-                        return (
-                          <Genre
-                            key={index}
-                            elem={elem}
-                          />
-                        )
-                      })}
-                      <p className="film__text">{text}</p>
-                      <div className={className}>
-                        <p>{rating}</p>
-                      </div>
-                      <Rate
-                        count={10}
-                        value={stars[index]}
-                      />
-                    </div>
-                  </div>
-                )
-              }}
-            </RatedFilmsConsumer>
+                  )
+                })}
+                <p className="film__text">{text}</p>
+                <div className={className}>
+                  <p>{rating}</p>
+                </div>
+                <Rate
+                  className="rating-film__stars"
+                  count={10}
+                  value={stars[index]}
+                />
+              </div>
+            </div>
           )
         }
       }
@@ -90,6 +84,9 @@ RatedFilm.propTypes = {
   genre_ids: PropTypes.arrayOf(PropTypes.number),
   overview: PropTypes.string,
   poster_path: PropTypes.string,
+  vote_average: PropTypes.number,
+  stars: PropTypes.arrayOf(PropTypes.number),
+  index: PropTypes.number,
 }
 
 RatedFilm.defaultProps = {
@@ -98,6 +95,9 @@ RatedFilm.defaultProps = {
   genre_ids: [],
   overview: '',
   poster_path: '',
+  vote_average: 0,
+  stars: [],
+  index: 0,
 }
 
 export default RatedFilm

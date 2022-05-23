@@ -4,20 +4,18 @@ import { useState, useEffect } from 'react'
 import FilmsList from '../films-list'
 import Finder from '../finder'
 import MapiService from '../../services/mapi-service'
-import JapiService from '../../services/japi-service'
 
 function SearchContainer({
-  setRatedFilms, ratedFilms, setStars, stars
+  ratedFilms, setRatedFilms,
+  stars, setStars,
 }) {
   const [films, setFilms] = useState([])
-  const [genres, setGenres] = useState([])
-  const [labelInput, setLabelInput] = useState('')
+  const [textInput, setTextInput] = useState('')
   const [onDebounced, setOnDebounced] = useState(false)
   const [minValue, setMinValue] = useState(0)
   const [maxValue, setMaxValue] = useState(1)
   const [error, setError] = useState(false)
   useEffect(() => {
-    JapiService(setGenres, setError)
     MapiService(setFilms, setError, '')
     setMinValue(0)
     setMaxValue(6)
@@ -38,23 +36,21 @@ function SearchContainer({
     <>
       {errorMessage}
       <Finder
-        setOnDebounced={setOnDebounced}
-        labelInput={labelInput}
-        setLabelInput={setLabelInput}
-        films={films}
+        textInput={textInput}
         setFilms={setFilms}
+        setOnDebounced={setOnDebounced}
+        setTextInput={setTextInput}
       />
       <FilmsList
+        ratedFilms={ratedFilms}
+        films={films}
         stars={stars}
         setStars={setStars}
-        ratedFilms={ratedFilms}
         setRatedFilms={setRatedFilms}
         onDebounced={onDebounced}
-        labelInput={labelInput}
-        setLabelInput={setLabelInput}
+        textInput={textInput}
         minValue={minValue}
         maxValue={maxValue}
-        films={films}
       />
       <Pagination
         className="pagination__container"

@@ -5,7 +5,6 @@ import { Rate } from 'antd'
 
 import Genre from '../genre'
 import { JenreConsumer } from '../jenre-context'
-import { RatedFilmsConsumer } from '../rated-films-context'
 
 function Film({
   elem,
@@ -45,39 +44,33 @@ function Film({
         (genres) => {
           const genresFilm = tags.map(elem => genres[elem])
           return (
-            <RatedFilmsConsumer>
-              {() => {
-                return (
-                  <div className="film__container">
-                    <img
-                      src={`https://image.tmdb.org/t/p/w500/${img}`}
-                      alt="Poster"
-                      className="film__img"
+            <div className="film__container">
+              <img
+                src={`https://image.tmdb.org/t/p/w500/${img}`}
+                alt="Poster"
+                className="film__img"
+              />
+              <div className="film__about">
+                <h2 className="film__name">{name}</h2>
+                <p className="film__date_created">{dateCreated}</p>
+                {genresFilm.map((elem, index) => {
+                  return (
+                    <Genre
+                      key={index}
+                      elem={elem}
                     />
-                    <div className="film__about">
-                      <h2 className="film__name">{name}</h2>
-                      <p className="film__date_created">{dateCreated}</p>
-                      {genresFilm.map((elem, index) => {
-                        return (
-                          <Genre
-                            key={index}
-                            elem={elem}
-                          />
-                        )
-                      })}
-                      <p className="film__text">{text}</p>
-                      <div className={className}>
-                        <p>{rating}</p>
-                      </div>
-                      <Rate
-                        count={10}
-                        onChange={(value) => addOnRatedFilms(elem, value)}
-                      />
-                    </div>
-                  </div>
-                )
-              }}
-            </RatedFilmsConsumer>
+                  )
+                })}
+                <p className="film__text">{text}</p>
+                <div className={className}>
+                  <p>{rating}</p>
+                </div>
+                <Rate
+                  count={10}
+                  onChange={(value) => addOnRatedFilms(elem, value)}
+                />
+              </div>
+            </div>
           )
         }
       }
@@ -86,19 +79,55 @@ function Film({
 }
 
 Film.propTypes = {
+  elem: PropTypes.objectOf(PropTypes.shape({
+    adult: PropTypes.bool,
+    backdrop_path: PropTypes.string,
+    genre_ids: PropTypes.arrayOf(PropTypes.number),
+    id: PropTypes.number,
+    original_language: PropTypes.string,
+    original_title: PropTypes.string,
+    overview: PropTypes.string,
+    popularity: PropTypes.number,
+    poster_path: PropTypes.string,
+    release_date: PropTypes.string,
+    title: PropTypes.string,
+    video: PropTypes.bool,
+    vote_average: PropTypes.number,
+    vote_count: PropTypes.number,
+  })),
+  genre_ids: PropTypes.arrayOf(PropTypes.number),
   title: PropTypes.string,
   release_date: PropTypes.string,
-  genre_ids: PropTypes.number,
   overview: PropTypes.string,
   poster_path: PropTypes.string,
+  vote_average: PropTypes.number,
+  addOnRatedFilms: PropTypes.func,
 }
 
 Film.defaultProps = {
+  elem: {
+    adult: false,
+    backdrop_path: '',
+    genre_ids: [],
+    id: 0,
+    original_language: '',
+    original_title: '',
+    overview: '',
+    popularity: 0,
+    poster_path: '',
+    release_date: '',
+    title: '',
+    video: false,
+    vote_average: 0,
+    vote_count: 0,
+  },
+  genre_ids: [],
   title: '',
   release_date: '',
-  genre_ids: 0,
   overview: '',
   poster_path: '',
+  vote_average: 0,
+  addOnRatedFilms: () => {},
 }
 
 export default Film
