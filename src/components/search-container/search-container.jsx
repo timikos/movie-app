@@ -6,11 +6,11 @@ import Finder from '../finder'
 import MapiService from '../../services/mapi-service'
 
 function SearchContainer({
+  films, setFilms,
   ratedFilms, setRatedFilms,
+  textInput, setTextInput,
   stars, setStars,
 }) {
-  const [films, setFilms] = useState([])
-  const [textInput, setTextInput] = useState('')
   const [onDebounced, setOnDebounced] = useState(false)
   const [minValue, setMinValue] = useState(0)
   const [maxValue, setMaxValue] = useState(1)

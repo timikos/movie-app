@@ -9,6 +9,8 @@ import { JenreProvider } from './components/jenre-context'
 import './app.css'
 
 function App() {
+  const [films, setFilms] = useState([])
+  const [textInput, setTextInput] = useState('')
   const [toggleTab, setToggleTab] = useState(true)
   const [ratedFilms, setRatedFilms] = useState([])
   const [stars, setStars] = useState([])
@@ -25,6 +27,10 @@ function App() {
       <JenreProvider value={genres}>
         {toggleTab
           ? <SearchContainer
+            textInput={textInput}
+            setTextInput={setTextInput}
+            films={films}
+            setFilms={setFilms}
             ratedFilms={ratedFilms}
             setRatedFilms={setRatedFilms}
             stars={stars}
