@@ -2,4 +2,4 @@ Movie App
 
 VERCEL
 
-https://movie-app-neon-sigma.vercel.app/
+https://movie-app-timikos1.vercel.app/
