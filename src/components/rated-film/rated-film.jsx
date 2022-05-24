@@ -56,14 +56,16 @@ function RatedFilm({
               <div className="film__about">
                 <h2 className="film__name">{name}</h2>
                 <p className="film__date_created">{dateCreated}</p>
-                {genresFilm.map((elem, index) => {
-                  return (
-                    <Genre
-                      key={index}
-                      elem={elem}
-                    />
-                  )
-                })}
+                <div className="film__tags">
+                  {genresFilm.map((elem, index) => {
+                    return (
+                      <Genre
+                        key={index}
+                        elem={elem}
+                      />
+                    )
+                  })}
+                </div>
                 <p className="film__text">{text}</p>
                 <div className={className}>
                   <p>{rating}</p>

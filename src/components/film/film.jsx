@@ -33,7 +33,7 @@ function Film({
       ? setDateCreated(format(parseISO(release_date), 'MMMM dd, yyyy'))
       : ''
     setTags(genre_ids)
-    setText(limitText(overview))
+    overview ? setText(limitText(overview)) : setText('*No have information*')
     poster_path
       ? setImg(`https://image.tmdb.org/t/p/w500/${poster_path}`)
       : setImg(`${noImg}`)

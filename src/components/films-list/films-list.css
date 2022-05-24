@@ -2,10 +2,10 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  height: 907px;
+  height: 900px;
   list-style-type: none;
 }
-@media (max-width: 900px) {
+@media (max-width: 800px) {
   .films-list__container {
     flex-wrap: nowrap;
     height: 100%;
