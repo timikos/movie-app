@@ -11,7 +11,7 @@
 
   @media (max-width: 320px) {
     height: 245px;
-    width: 387px;
+    width: 380px;
     display: block;
   }
 }
@@ -28,7 +28,17 @@
   }
 }
 
+.film__about{
+  margin: 0 20px 0 20px;
+  text-align: left;
+
+  @media (max-width: 320px) {
+    margin: 10px;
+  }
+}
+
 .film__name {
+  width: 20px;
   @media (max-width: 320px) {
 
   }
@@ -37,15 +47,6 @@
 .film__date_created{
   @media (max-width: 320px) {
 
-  }
-}
-
-.film__about{
-  margin: 0 20px 0 20px;
-  text-align: left;
-
-  @media (max-width: 320px) {
-    margin: 10px;
   }
 }
 
@@ -91,10 +92,5 @@
   border-color: #66E900;
 }
 
-//.star {
-//  overflow: hidden;
-//  width: 30px;
-//  margin: 0 auto;
-//}
 
 

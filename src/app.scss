@@ -5,9 +5,6 @@
   min-height: 1000px;
   background: white;
 
-  @media (max-width: 320px){
-    margin: 10px;
-  }
 }
 
 .pagination__container{
@@ -16,4 +13,8 @@
 
 .error__message{
   text-align: center;
+}
+
+ul {
+  padding-inline-start: 0;
 }

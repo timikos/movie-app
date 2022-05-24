@@ -6,6 +6,8 @@ import RatedContainer from './components/rated-container'
 import JapiService from './services/japi-service'
 import { JenreProvider } from './components/jenre-context'
 
+import './app.css'
+
 function App() {
   const [toggleTab, setToggleTab] = useState(true)
   const [ratedFilms, setRatedFilms] = useState([])

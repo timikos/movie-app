@@ -3,6 +3,7 @@ import { Input } from 'antd'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 
+import './finder.css'
 import MapiService from '../../services/mapi-service'
 
 function Finder (

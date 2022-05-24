@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react'
-import { Spin } from 'antd'
 
+import Spinner from '../spinner'
 import Film from '../film'
+
+import './films-list.css'
 
 function FilmsList(
   {
@@ -16,7 +18,7 @@ function FilmsList(
   const [onLoad, setOnLoad] = useState(false)
   const [onResult, setOnResult] = useState(false)
   const [onHaveTextInput, setOnHaveTextInput] = useState(false)
-  const spinnerLoading = onLoad ? <Spin /> : null
+  const spinnerLoading = onLoad ? <Spinner /> : null
   const noResultDiv = onResult ? <p>Нет результатов</p> : null
   const noTextInputDiv = onHaveTextInput ? <p>Введите название фильма</p> : null
   useEffect(() => {

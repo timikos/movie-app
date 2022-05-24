@@ -1,6 +1,8 @@
+import '../film/film.css'
+
 function Genre ({ elem }) {
   return (
-    <p className="film__tags">{elem}</p>
+    <p className="film__tag">{elem}</p>
   )
 }
 

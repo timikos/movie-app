@@ -5,6 +5,8 @@ import { Rate } from 'antd'
 
 import Genre from '../genre'
 import { JenreConsumer } from '../jenre-context'
+import '../film/film.css'
+import noImg from '../static/no-img.png'
 
 function RatedFilm({
   title, release_date,
@@ -30,7 +32,9 @@ function RatedFilm({
       : ''
     setTags(genre_ids)
     setText(limitText(overview))
-    poster_path ? setImg(poster_path) : setImg('')
+    poster_path
+      ? setImg(`https://image.tmdb.org/t/p/w500/${poster_path}`)
+      : setImg(`${noImg}`)
     setRating(vote_average)
   }, [])
   if (rating >= 0 && rating < 3) className += ' circle-rating__red'
@@ -45,7 +49,7 @@ function RatedFilm({
           return (
             <div className="film__container">
               <img
-                src={`https://image.tmdb.org/t/p/w500/${img}`}
+                src={img}
                 alt="Poster"
                 className="film__img"
               />
@@ -65,7 +69,7 @@ function RatedFilm({
                   <p>{rating}</p>
                 </div>
                 <Rate
-                  className="rating-film__stars"
+                  className="film__stars"
                   count={10}
                   value={stars[index]}
                 />

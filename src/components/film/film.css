@@ -9,18 +9,20 @@
   padding: 0;
   box-shadow: 4px 4px 8px 0 rgba(34, 60, 80, 0.2);
 }
-@media (max-width: 320px) {
+@media (max-width: 420px) {
   .film__container {
     height: 245px;
-    width: 387px;
+    width: 100%;
     display: block;
+    margin: 0 auto;
   }
 }
 
 .film__img {
   height: 100%;
+  width: 183px;
 }
-@media (max-width: 320px) {
+@media (max-width: 420px) {
   .film__img {
     height: 91px;
     width: 60px;
@@ -30,25 +32,95 @@
   }
 }
 
-@media (max-width: 320px) {
-  .film__tags {
-    margin-bottom: 20px;
-  }
-}
-
 .film__about {
-  margin: 0 20px 0 20px;
+  position: relative;
+  height: 270px;
+  margin: 0 10px 0 10px;
   text-align: left;
 }
-@media (max-width: 320px) {
+@media (max-width: 420px) {
   .film__about {
     margin: 10px;
+    height: 245px;
   }
 }
 
-@media (max-width: 320px) {
+.film__name {
+  position: absolute;
+  top: 5px;
+  width: 200px;
+  height: 40px;
+}
+
+@media (max-width: 420px) {
+  .film__name {
+    left: 70px;
+    width: 300px;
+    height: 40px;
+  }
+}
+
+.film__date_created{
+  position: absolute;
+  top: 50px;
+  color: #827E7E;
+}
+
+@media (max-width: 420px) {
+  .film__date_created {
+    top: 50px;
+    left: 70px;
+  }
+}
+
+.film__tags {
+  position: absolute;
+  top: 70px;
+  width: 250px;
+}
+
+@media (max-width: 420px) {
+  .film__tags {
+    margin-bottom: 20px;
+    left: 70px;
+    top: 70px;
+  }
+}
+
+.film__tag {
+  padding: 0 3px;
+  display: inline-block;
+  background: #FAFAFA;
+  display: inline;
+  border: 1px solid #D9D9D9;
+  border-radius: 2px;
+}
+
+.film__text {
+  position: relative;
+  top: 100px;
+}
+
+@media (max-width: 420px) {
   .film__text {
-    float: inherit;
+    float: left;
+    top: 10px;
+    width: 100%;
+  }
+}
+
+.film__stars {
+  position: absolute;
+  bottom: 15px;
+  left: 10px;
+  width: 250px;
+  font-size: 15px;
+}
+
+@media (max-width: 420px) {
+  .film__stars {
+    bottom: 10px;
+    left: 150px;
   }
 }
 
@@ -56,6 +128,10 @@
   position: absolute;
   top: 10px;
   right: 10px;
+  border: 2px solid;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
 }
 .film__circle-rating p {
   position: absolute;
@@ -66,4 +142,18 @@
   font-size: 11px;
 }
 
-/*# sourceMappingURL=film.css.map */
+.circle-rating__red {
+  border-color: #E90000;
+}
+
+.circle-rating__orange {
+  border-color: #E97E00;
+}
+
+.circle-rating__yellow {
+  border-color: #E9D100;
+}
+
+.circle-rating__green {
+  border-color: #66E900;
+}

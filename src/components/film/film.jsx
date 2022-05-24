@@ -5,6 +5,9 @@ import { Rate } from 'antd'
 
 import Genre from '../genre'
 import { JenreConsumer } from '../jenre-context'
+import noImg from '../static/no-img.png'
+
+import './film.css'
 
 function Film({
   elem,
@@ -31,7 +34,9 @@ function Film({
       : ''
     setTags(genre_ids)
     setText(limitText(overview))
-    poster_path ? setImg(poster_path) : setImg('')
+    poster_path
+      ? setImg(`https://image.tmdb.org/t/p/w500/${poster_path}`)
+      : setImg(`${noImg}`)
     setRating(vote_average)
   }, [])
   if (rating >= 0 && rating < 3) className += ' circle-rating__red'
@@ -46,26 +51,29 @@ function Film({
           return (
             <div className="film__container">
               <img
-                src={`https://image.tmdb.org/t/p/w500/${img}`}
+                src={img}
                 alt="Poster"
                 className="film__img"
               />
               <div className="film__about">
                 <h2 className="film__name">{name}</h2>
                 <p className="film__date_created">{dateCreated}</p>
-                {genresFilm.map((elem, index) => {
-                  return (
-                    <Genre
-                      key={index}
-                      elem={elem}
-                    />
-                  )
-                })}
+                <div className="film__tags">
+                  {genresFilm.map((elem, index) => {
+                    return (
+                      <Genre
+                        key={index}
+                        elem={elem}
+                      />
+                    )
+                  })}
+                </div>
                 <p className="film__text">{text}</p>
                 <div className={className}>
                   <p>{rating}</p>
                 </div>
                 <Rate
+                  className="film__stars"
                   count={10}
                   onChange={(value) => addOnRatedFilms(elem, value)}
                 />
