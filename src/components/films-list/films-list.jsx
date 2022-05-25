@@ -35,7 +35,7 @@ function FilmsList(
     const newArrStars = [...stars]
     newArrStars.push(valueStars)
     setStars(newArrStars)
-    setRatedFilms(newArrRatedFilms)
+    !ratedFilms.includes(film) ? setRatedFilms(newArrRatedFilms) : null
   }
   const elements = films.map((elem, index) => {
     if (index >= minValue && index < maxValue) {
@@ -43,6 +43,7 @@ function FilmsList(
         <li key={index}>
           <Film
             addOnRatedFilms={addOnRatedFilms}
+            index={index}
             elem={elem}
             {...elem}
           />

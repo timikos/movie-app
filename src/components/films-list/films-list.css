@@ -1,12 +1,14 @@
 .films-list__container {
   display: flex;
-  flex-direction: column;
+  flex-direction: raw;
   flex-wrap: wrap;
-  height: 900px;
+  max-height: 900px;
   list-style-type: none;
+
 }
 @media (max-width: 800px) {
   .films-list__container {
+    flex-direction: column;
     flex-wrap: nowrap;
     height: 100%;
     padding: 0;
