@@ -20,6 +20,7 @@ function RatedFilm({
   const [tags, setTags] = useState([])
   const [text, setText] = useState('')
   const [rating, setRating] = useState(0)
+  const [starsTen, setStarsTen] = useState(0)
   let className = 'film__circle-rating'
   const limitText = (text) => {
     const limited = text.substring(0, 400) + '...'
@@ -36,6 +37,7 @@ function RatedFilm({
       ? setImg(`https://image.tmdb.org/t/p/w500/${poster_path}`)
       : setImg(`${noImg}`)
     setRating(vote_average)
+    setStarsTen(stars)
   }, [])
   if (rating >= 0 && rating < 3) className += ' circle-rating__red'
   else if (rating >= 3 && rating < 5) className += ' circle-rating__orange'
@@ -73,7 +75,7 @@ function RatedFilm({
                 <Rate
                   className="film__stars"
                   count={10}
-                  value={stars[index]}
+                  value={starsTen[index]}
                 />
               </div>
             </div>

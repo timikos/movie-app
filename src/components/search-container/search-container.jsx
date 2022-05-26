@@ -52,13 +52,14 @@ function SearchContainer({
         minValue={minValue}
         maxValue={maxValue}
       />
-      <Pagination
+      {films.length > 6
+      && <Pagination
         className="pagination__container"
         defaultPageSize={6}
         defaultCurrent={1}
         total={films.length}
         onChange={changePage}
-      />
+      />}
     </>
   )
 }

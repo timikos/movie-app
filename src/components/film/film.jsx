@@ -14,7 +14,7 @@ function Film({
   title, release_date,
   genre_ids, overview,
   poster_path, vote_average,
-  addOnRatedFilms, index
+  addOnRatedFilms
 }) {
   const [img, setImg] = useState('')
   const [name, setName] = useState('')
@@ -39,10 +39,10 @@ function Film({
       ? setImg(`https://image.tmdb.org/t/p/w500/${poster_path}`)
       : setImg(`${noImg}`)
     setRating(vote_average)
-    setValue(JSON.parse(window.localStorage.getItem(`value${index}`)))
+    setValue(JSON.parse(window.localStorage.getItem(`value${title}`)))
   }, [])
   useEffect(() => {
-    window.localStorage.setItem(`value${index}`, value)
+    window.localStorage.setItem(`value${title}`, value)
   }, [value])
   if (rating >= 0 && rating < 3) className += ' circle-rating__red'
   else if (rating >= 3 && rating < 5) className += ' circle-rating__orange'

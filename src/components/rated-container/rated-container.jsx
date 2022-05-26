@@ -28,13 +28,14 @@ function RatedContainer({
         minValue={minValue}
         maxValue={maxValue}
       />
-      <Pagination
+      {ratedFilms.length > 6
+      && <Pagination
         className="pagination__container"
         defaultPageSize={6}
         defaultCurrent={1}
         total={ratedFilms.length}
         onChange={changePage}
-      />
+      />}
     </>
   )
 }

@@ -16,6 +16,7 @@ function App() {
   const [stars, setStars] = useState([])
   const [genres, setGenres] = useState([])
   useEffect(() => {
+    window.localStorage.clear()
     JapiService(setGenres)
   }, [])
   return (
