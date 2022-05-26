@@ -6,6 +6,7 @@
   display: flex;
   font-size: 10px;
   margin-top: 10px;
+  margin-left: 10px;
   box-shadow: 4px 4px 8px 0 rgba(34, 60, 80, 0.2);
 }
 @media (max-width: 420px) {
